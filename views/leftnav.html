@@ -1,0 +1,97 @@
+<section class="left-nav col-sm-3 hidden-xs">
+	<div class="personnal-title">
+		<span>Personal Information</span>				
+		<i class="fa fa-toggle-on pull-right"></i>
+	</div>
+	<div class="personal-info">
+		<div class="account">
+			<img class="img-circle" src="../images/p_icon.png"/>
+			<a href="javascript:;" ><span><%= user.username%></span><i class="fa fa-cog fa-spin"></i></a>
+			<i class="fa fa-comment-o pull-right p-badge"></i>
+		</div>
+	</div>
+	
+	<!-- modal tip for show personal info -->
+	<div class="p-modal hidden">
+		<section class="panel bg-white">
+			<div class="panel-heading p-modal-heading">
+				<strong>You have <span class="m-count">2</span> notifications</strong>
+			</div>
+			<div class="list-group">
+				<a href="javascript:;" class="list-group-item media">
+					<span class="text-center pull-left">
+						<i class="fa fa-envelope-o fa-2x text-success"></i>
+					</span>
+					<span class="media-body d-block">
+						<span class="m-message d-block">Sam upload a cost form !</span>
+					</span>
+				</a>
+				<a href="/home/chat" class="list-group-item media" target="iframe">
+					<span class="text-center pull-left">
+						<img class="img-circle head head-f" src="../images/head-f.jpg" />
+					</span>
+					<span class="media-body d-block">
+						<span class="m-message d-block">Alice leave a message for you !</span>
+					</span>
+				</a>
+			</div>
+		</section>
+	</div>
+	
+	<div class="info-tips">
+		<div class="title">Introduction</div>
+		<div class="introduce">
+			<i class="fa fa-star"></i>
+			<span class="favor">Every horse thinks its own pack heaviest !</span>
+		</div>
+	</div>
+	<div class="panel-group" id="collapsePanel" role="tablist" aria-multiselectable="true">
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingOne">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#collapsePanel" href="#viewRoommate" aria-expanded="true" aria-controls="viewRoommate">
+						<span>
+							<i class="fa fa-qq"></i>
+							<em class="collapse-title">Roommates</em>
+							<i class="fa fa-angle-down pull-right switch-icon"></i>
+						</span>
+					</a>
+				</h4>
+			</div>
+			<div id="viewRoommate" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+				<div class="panel-body">
+					<dl>
+						<dd class="border-div"></dd>
+						<dd><a href="javascript:;"><img class="img-circle head head-f" src="../images/head-f.jpg" /><em class="u-name">Alice</em></a> <i class="fa fa-paper-plane pull-right"></i></dd>
+						<dd class="border-div"></dd>
+						<dd><a href="javascript:;"><img class="img-circle head head-m" src="../images/head-m.gif" /><em class="u-name">Sam</em></a> <i class="fa fa-paper-plane pull-right"></i></dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingTwo">
+				<h4 class="panel-title">
+					<a class="collapsed" data-toggle="collapse" data-parent="#collapsePanel" href="#viewFriend" aria-expanded="false" aria-controls="viewFriend">
+						<span>
+							<i class="fa fa-weixin"></i>
+							<em class="collapse-title">Friends </em>
+							<i class="fa fa-angle-down pull-right switch-icon"></i>
+						</span>
+					</a>
+				</h4>
+			</div>
+			<div id="viewFriend" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+				<div class="panel-body">
+					<dl>
+						<dd class="border-div"></dd>
+						<dd><a href="javascript:;"><img class="img-circle head head-f" src="../images/head-f.jpg" /><em class="u-name">Yummy</em></a> <i class="fa fa-paper-plane pull-right"></i></dd>
+						<dd class="border-div"></dd>
+						<dd><a href="javascript:;"><img class="img-circle head head-m" src="../images/head-m.gif" /><em class="u-name">Slice</em></a> <i class="fa fa-paper-plane pull-right"></i></dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

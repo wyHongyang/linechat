@@ -1,0 +1,42 @@
+<% include header.html %>
+<link  type="text/css" rel="stylesheet" href="../css/index.min.css"/>
+</head>
+<body>
+	<div class="info-content row">
+		<div class="information col-sm-3">
+			<div class="head-image thumbnail">
+				<a href="javascript:;">
+					<img class="img-circle" src="../images/head-m.gif"/>
+				</a>
+				<div class="caption">
+					<h3><%= user.username %></h3>
+					<div class="border-div"></div>
+					<div class="join">
+						<span class="glyphicon glyphicon-time"></span><span>Joined on <%= joinTime.time %></span>
+						<div class="border-div"></div>
+						<div class="view-states">
+							<a class="view-state" href="javascript:;">
+								<strong class="view-state-sum"><%= follower.follower %></strong>
+								<span class="text-span">Follower</span>
+							</a>
+							<a class="view-state" href="javascript:;">
+								<strong class="view-state-sum"><%= follower.viewer %></strong>
+								<span class="text-span">Viewer</span>
+							</a>
+							<a class="view-state" href="javascript:;">
+								<strong class="view-state-sum"><%= follower.share %></strong>
+								<span class="text-span">Share</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="relations col-sm-9">
+			<div class="draw-relations">
+				
+			</div>
+		</div>	
+	</div>
+<% include footer.html %>
+

@@ -1,0 +1,100 @@
+/* animation.less with myself default */
+
+/* shake-tips*/
+
+@-webkit-keyframes t-shake {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.510, 0.355, 0.510);
+            transition-timing-function: cubic-bezier(0.215, 0.510, 0.355, 0.510);
+  }
+
+  0% {
+    opacity: 0.5;
+    -webkit-transform: scale3d(.6, .6, .6);
+            transform: scale3d(.6, .6, .6);
+  }
+
+  20% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+            transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(.9, .9, .9);
+            transform: scale3d(.9, .9, .9);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+            transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    -webkit-transform: scale3d(.97, .97, .97);
+            transform: scale3d(.97, .97, .97);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes t-shake {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.510, 0.355, 0.510);
+            transition-timing-function: cubic-bezier(0.215, 0.510, 0.355, 0.510);
+  }
+
+  0% {
+    opacity: 0.5;
+    -webkit-transform: scale3d(.6, .6, .6);
+            transform: scale3d(.6, .6, .6);
+  }
+
+  20% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+            transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(.9, .9, .9);
+            transform: scale3d(.9, .9, .9);
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+            transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    -webkit-transform: scale3d(.97, .97, .97);
+            transform: scale3d(.97, .97, .97);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+  }
+}
+
+.t-shake{
+  -webkit-animation-name: t-shake;
+          animation-name: t-shake;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+	
+}
+
+.infinite{
+	-webkit-animation-iteration-count:infinite;
+			animation-iteration-count:infinite;
+	   -moz-animation-iteration-count:infinite;
+	   	 -o-animation-iteration-count:infinite; 	
+}
+
+
