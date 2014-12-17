@@ -100,6 +100,7 @@ if (app.get('env') === 'development') {
             error: err
         });
     });
+    
 }
 
 // production error handler
@@ -116,7 +117,13 @@ app.use(function(err, req, res, next) {
  * config mongoose step 2
  * 
  * */
-mongoose.connect('mongodb://localhost/linechat'); //step 2
+if(app.get('env') === 'development'){
+	mongoose.connect('mongodb://localhost/linechat'); //step 2	
+}
+
+if(app.get('env') === 'production'){
+	mongoose.connect('mongodb://' + process.env.MONGOLAB_URI ); //step 2	
+}
 
 /**
  * set server
