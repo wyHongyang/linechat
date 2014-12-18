@@ -15,19 +15,19 @@
 		var text = $message.val();
 		var imageSrc = $this.parents('.chat-item').find('.img-circle').attr('src');
 		if(text.trim()!= ""){
-			var html = '<section class="re-chat-content">'+
-					   '<article class="chat-item">'+
-					   '<a href="javascript:;" class="pull-right ">'+
-					   '<img class="img-circle head head-m" src='+imageSrc+' /></a>'+
-					   '<section class="chat-body">'+
-					   '<div class="panel text-sm">'+
-					   '<div class="arrow-right-up"></div>'+
-					   '<div class="arrow-right-down"></div>'+
-					   '<div class="panel-body">'+
-					   '<p>'+text+'</p></div></div>'+
-					   '<small class="send-time">Sam ,'+dateString+'</small></section></article></section>';   
-			$borderDiv.before(html);
-			$message.val('');
+//			var html = '<section class="re-chat-content">'+
+//					   '<article class="chat-item">'+
+//					   '<a href="javascript:;" class="pull-right ">'+
+//					   '<img class="img-circle head head-m" src='+imageSrc+' /></a>'+
+//					   '<section class="chat-body">'+
+//					   '<div class="panel text-sm">'+
+//					   '<div class="arrow-right-up"></div>'+
+//					   '<div class="arrow-right-down"></div>'+
+//					   '<div class="panel-body">'+
+//					   '<p>'+text+'</p></div></div>'+
+//					   '<small class="send-time">Sam ,'+dateString+'</small></section></article></section>';   
+//			$borderDiv.before(html);
+//			$message.val('');
 			/*
 			 * 这里需要将数据ajax给后台
 			 * $.ajax({
@@ -45,6 +45,33 @@
 			 * }
 			 * });
 			 * */
+			$.ajax({
+				url:'/home/chat',
+				data:{
+					message:text,
+					dateStraing:dateString
+				},
+				type:'POST',
+				dataType:'json',
+				success : function(result){
+					var html = '<section class="re-chat-content">'+
+					   '<article class="chat-item">'+
+					   '<a href="javascript:;" class="pull-right ">'+
+					   '<img class="img-circle head head-m" src='+imageSrc+' /></a>'+
+					   '<section class="chat-body">'+
+					   '<div class="panel text-sm">'+
+					   '<div class="arrow-right-up"></div>'+
+					   '<div class="arrow-right-down"></div>'+
+					   '<div class="panel-body">'+
+					   '<p>'+text+'</p></div></div>'+
+					   '<small class="send-time">'+result.username+' ,'+dateString+'</small></section></article></section>';   
+					$borderDiv.before(html);
+					$message.val('');
+				},
+				error:function(result){
+					
+				}
+			});
 		}
 	});
 	

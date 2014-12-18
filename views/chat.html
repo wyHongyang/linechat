@@ -17,14 +17,14 @@
 							<div class="arrow-left-up"></div>
 							<div class="arrow-left-down"></div>
 							<div class="panel-body">
-								<p>Hi sam, I have upload a cost form !</p>
+								<p>Hi <%= user.username%>, I have upload a cost form !</p>
 							</div>
 						</div>
 						<small class="send-time">Alice ,4 hours ago</small>
 					</section>
 				</article>
 			</section>
-			<section class="re-chat-content">
+			<!-- <section class="re-chat-content">
 				<article class="chat-item">
 					<a href="javascript:;" class="pull-right ">
 						<img class="img-circle head head-m" src="../images/head-m.gif" />
@@ -37,10 +37,10 @@
 								<p>yeah ! I knew it .</p>
 							</div>
 						</div>
-						<small class="send-time">Sam ,1 minutes ago</small>
+						<small class="send-time"><%= user.username%> ,1 minutes ago</small>
 					</section>
 				</article>
-			</section>
+			</section> -->
 			
 			<!-- border-div -->
 			<div class="border-div"></div>
