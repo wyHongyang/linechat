@@ -44,7 +44,7 @@ router.post('/chat',function(req,res){
 	});
 	message.save(function(err,message){
 		if(!err){
-			res.send(200,{
+			res.status(200).send({
 				username : req.session.username,
 				message:'send success!'
 			});
