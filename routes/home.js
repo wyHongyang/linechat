@@ -34,6 +34,7 @@ router.get('/chat',function(req,res){
  * handle chat post
  * 
  * */
+
 router.post('/chat',function(req,res){
 	var message = new Message({
 		master_id : req.session._id,
@@ -47,16 +48,16 @@ router.post('/chat',function(req,res){
 				username : req.session.username,
 				message:'send success!'
 			});
-			console.log(message);
+		}else{
+			res.redirect('/');
 		}
 	});
-	console.log(message);
-	console.log(req.body);
 });
 
 
 /**
  * render index
+ * 
  * */
 
 router.get('/index',function(req,res){
@@ -71,9 +72,7 @@ router.get('/index',function(req,res){
 	
 	User.find({_id : req.session._id},function(err,docs){
 		if(!err){
-			console.log(docs);
 			user.username = docs[0].username;
-//			console.log(docs[0].username);
 			var signupDate = docs[0].signupDate;
 			user.signupDate = (signupDate.getMonth()+1)+"/"+signupDate.getDate()+"/"+signupDate.getFullYear()+" "+signupDate.getHours()+":"+signupDate.getMinutes()+":"+signupDate.getSeconds();
 			res.render('index',{ 
