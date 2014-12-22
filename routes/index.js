@@ -17,7 +17,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
-
+var Message = require('../models/message');
 /**
  * @description get home page
  * 
@@ -31,13 +31,13 @@ router.get('/',function(req,res){
  * 相应注册
  * */
 
-router.post('/reg',function(req,res){
+router.post('/signup',function(req,res){
 	var user = new User ({
-		username:req.body.username,
-		password:req.body.password,
-		email:req.body.email,
-		address:req.body.address,
-		birthDate:req.body.birthDate
+		username : req.body.username,
+		password : req.body.password,
+		email    : req.body.email,
+		birthDate: req.body.birthDate,
+		gender   : req.body.gender
 	});
 	user.save(function (err, user) {  
         if(!err) {  
@@ -47,6 +47,7 @@ router.post('/reg',function(req,res){
 	       	        if(docs!=''){  
 	       	            req.session.username = user.username;
 	       	            req.session._id = docs[0]._id;
+	       	            req.session.imageUrl = docs[0].profile_image_url;
 	       	            return res.redirect('/home');
 	       	        } else{  
 	       	            return res.redirect('/');  
@@ -64,7 +65,7 @@ router.post('/reg',function(req,res){
  * 
  * */
 
-router.post('/doReg',function(req,res){
+router.post('/login',function(req,res){
 	 var user = {
 		 email : req.body.email,
 		 password : req.body.password
@@ -78,6 +79,7 @@ router.post('/doReg',function(req,res){
 	            console.log(req.session);
 	            req.session.username = docs[0].username;
 	            req.session._id = docs[0]._id;
+	            req.session.imageUrl = docs[0].profile_image_url;
 //	            return res.redirect('/home'+"?id="+docs[0]._id+'');  
 	            return res.redirect('/home');
 	        } else{  
@@ -94,7 +96,15 @@ router.post('/doReg',function(req,res){
 router.get('/home',function(req,res){
 	var user = {};
 	user.username = req.session.username;
-	res.render('home',{user:user});
+	user.imageUrl = req.session.imageUrl;
+	Message.find({send_to:req.session._id},function(err,messages){
+		if(!err){
+			user._id = req.session._id;
+			user.messages = messages;
+			console.log(user|user.messages.length);
+			res.render('home',{user:user});
+		}
+	});
 });
 
 module.exports = router;

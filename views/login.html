@@ -6,60 +6,65 @@
 	<div class="container">
 			<div class="switch">
 				<i class="fa fa-times fa-pencil"></i>
-				<div class="tooltips t-shake infinite">Click Me </div>
+				<div class="tooltips t-shake infinite"><!-- Click Me -->使劲点我 </div>
 			</div>
-			<form class="form-horizontal" method="post" action="/doReg">
+			<form class="form-horizontal" method="post" action="/login">
 				<div class="title">
-					Login To Your Account 
+					<!-- Login To Your Account --> 登录
 				</div>
 				<div class="form-group">
-					<label for="email" class="sr-only">email:</label>
-					<input type="text" id="email" class="form-control" name="email" placeholder="email"/>
+					<label for="email" class="sr-only"><!-- email: -->邮箱：</label>
+					<input type="text" id="email" class="form-control" name="email" placeholder="邮箱"/>
 				</div>
 				<div class="form-group">
-					<label for="password" class="sr-only">password:</label>
-					<input type="password" id="password" class="form-control" name="password" placeholder="Password"/>
+					<label for="password" class="sr-only"><!-- password: -->密码：</label>
+					<input type="password" id="password" class="form-control" name="password" placeholder="密码"/>
 				</div>
 				<div class="form-group">
 					<label>
 						<input type="checkbox" />
-						<span class="chktip">Remember me</span>
+						<span class="chktip"><!-- Remember me -->记住账号</span>
 					</label>
 				</div>
 				<div class="form-group">
-					<input type="submit" class="form-control login" value="Login"/>
+					<input type="submit" class="form-control login" value="登录"/>
 				</div>
 				<div class="form-group">
 					<label class="t-footer">
 					<i class="fa fa-paper-plane-o"></i><a href="https://houselove.herokuapp.com">https://houselove.herokuapp.com </a></label>
 				</div>
 			</form>
-			<form class="form-horizontal hidden" method="post" action="/reg">
+			<form class="form-horizontal hidden" method="post" action="/signup">
 				<div class="title">
-					Create An Account 
+					<!-- Create An Account -->创建账户
 				</div>
 				<div class="form-group">
-					<label for="username" class="sr-only">usename:</label>
-					<input type="text" id="username" class="form-control" name="username" placeholder="Username"/>
+					<label for="username" class="sr-only"><!-- usename: -->用户名：</label>
+					<input type="text" id="username" class="form-control" name="username" placeholder="用户名"/>
 				</div>
 				<div class="form-group">
-					<label for="password" class="sr-only">password:</label>
-					<input type="password" id="password" class="form-control" name="password" placeholder="Password"/>
+					<label for="password" class="sr-only"><!-- password: -->密码：</label>
+					<input type="password" id="password" class="form-control" name="password" placeholder="密码"/>
 				</div>
 				<div class="form-group">
-					<label for="repassword" class="sr-only">repassword:</label>
-					<input type="password" id="repassword" class="form-control" name="repassword" placeholder="Confirm Password"/>
+					<label for="repassword" class="sr-only"><!-- repassword: -->重新输入：</label>
+					<input type="password" id="repassword" class="form-control" name="repassword" placeholder="重新输入"/>
 				</div>
 				<div class="form-group">
-					<label for="email" class="sr-only">email:</label>
-					<input type="text" id="email" class="form-control" name="email" placeholder="Email Address"/>
+					<label for="email" class="sr-only"><!-- email: -->邮箱：</label>
+					<input type="text" id="email" class="form-control" name="email" placeholder="邮箱"/>
 				</div>
 				<div class="form-group">
-					<label for="birthDate" class="sr-only">birth:</label>
+					<label for="gender" class="sr-only">性别：</label>
+					<div class="inline-b"><label><input type="radio" id="male" name="gender" value="0" checked/>&nbsp;&nbsp;男</label></div>
+					<div class="inline-b"><label><input type="radio" id="female" name="gender" value="1" />&nbsp;&nbsp;女</label></div>
+				</div>
+				<div class="form-group">
+					<label for="birthDate" class="sr-only"><!-- birth: -->生日：</label>
 					<input type="text" id="birthDate" class="form-control" name="birthDate" placeholder="Birth Date(yyyy/mm/dd)" autocomplete="off"/>
 				</div>
 				<div class="form-group">
-					<input type="submit" class="form-control login" value="Sign Up"/>
+					<input type="submit" class="form-control login" value="注册"/>
 				</div>
 				<div class="form-group">
 					<label class="t-footer">

@@ -1,0 +1,52 @@
+<% include header.html %>
+<link type="text/css" rel="stylesheet" href="../css/reply.min.css" />
+</head>
+<body>
+	<div class="chat-main row">
+		<div class="chat-container col-sm-6">
+			<div class="chat-title">
+				<span>Replay to 洪阳</span>
+			</div>
+			
+			<section class="chat-content">
+				<% for(var i=0,len = user.messages.length;i< len;i++){ %>
+					<article class="chat-item">
+						<a href="javascript:;" class="pull-left ">
+							<img class="img-circle head head-f" src="../images/head-f.jpg" />
+						</a>
+						<section class="chat-body">
+							<div class="panel text-sm">
+								<div class="arrow-left-up"></div>
+								<div class="arrow-left-down"></div>
+								<div class="panel-body">
+									<p><%= user.messages[i].content %></p>
+								</div>
+							</div>
+							<small class="send-time"><%= user.messages[i].sender %>, <%= user.messages[i].send_time %></small>
+						</section>
+					</article>
+				<% } %>
+			</section>
+			<!-- border-div -->
+			<div class="border-div"></div>
+			<section class="send-m-content">
+				<article class="chat-item">
+					<a href="javascript:;" class="pull-left ">
+						<img class="img-circle head head-m" src="../images/head-m.gif" />
+					</a>
+					<section class="chat-body">
+						<div class="input-group">
+							<input type="text" class="form-control" id="replyMessage" placeholder="send something"/>
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-default" id="replySendMessage">Send</button>
+							</span>
+						</div>
+					</section>
+				</article>
+			</section>
+		</div>
+		<div class="svg-container col-sm-5 col-sm-offset-1">
+			
+		</div>
+	</div>
+<% include footer.html %>

@@ -1,5 +1,9 @@
 /**
- * @description 用于聊天记录 message
+ * @description 用于聊天,回复记录 message
+ * TODO 
+ * 消息包括：
+ * 谁发过来的，什么内容，什么时间，发给谁
+ * 消息种类都统称为type
  * 
  */
 var mongoose = require('mongoose'),
@@ -7,10 +11,17 @@ var mongoose = require('mongoose'),
 	ObjectId = Schema.ObjectId;
 
 var MessageSchema = new Schema({
-	master_id : {type: ObjectId ,required:true},
-	content   : {type: String }, 
-	sendTo_id : {type: ObjectId,required:true},
-	create_at : {type:Date,default:Date.now}
+	send_from 	: { type : ObjectId, required : true },
+	send_to 	: { type : ObjectId, required : true },
+	sender		: { type : String },
+	content		: { type : String },
+	send_time	: {	type : String },
+	is_read	    : { type : Boolean, default:false},
+	/**
+	 * TODO 
+	 * @param type : follower:评论 ,@:at ,view:点击  
+	 * */
+	type		: { type : String}
 });
 
 module.exports = mongoose.model('Message', MessageSchema);

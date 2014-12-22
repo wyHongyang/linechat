@@ -7,6 +7,10 @@
 	var $borderDiv = $('.border-div');
 	var $sendMessage = $('#sendMessage');
 	var $message = $('#message');
+	var $chatTitle = $('.chat-title span');
+	var $panelGroup = $('.panel-group');
+	var $dd = $panelGroup.find('dd');
+	var $container = $('.chat-reply-container');
 	
 	$sendMessage.on('click',function(){
 		var date = new Date();
@@ -49,7 +53,9 @@
 				url:'/home/chat',
 				data:{
 					message:text,
-					dateStraing:dateString
+					dateString:dateString,
+					sender:$chatTitle.text().split(' ')[2].toLowerCase(),
+					type : "follower"
 				},
 				type:'POST',
 				dataType:'json',
@@ -65,7 +71,7 @@
 					   '<div class="panel-body">'+
 					   '<p>'+text+'</p></div></div>'+
 					   '<small class="send-time">'+result.username+' ,'+dateString+'</small></section></article></section>';   
-					$borderDiv.before(html);
+					$container.before(html);
 					$message.val('');
 				},
 				error:function(result){

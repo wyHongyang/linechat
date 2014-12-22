@@ -5,9 +5,9 @@
 	</div>
 	<div class="personal-info">
 		<div class="account">
-			<img class="img-circle" src="../images/p_icon.png"/>
+			<img class="img-circle" src="<%= user.imageUrl%>"/>
 			<a href="javascript:;" ><span><%= user.username%></span><i class="fa fa-cog fa-spin"></i></a>
-			<i class="fa fa-comment-o pull-right p-badge"></i>
+			<i class="fa fa-comment-o pull-right p-badge"><span class="badge"><%= user.messages.length %></span></i>
 		</div>
 	</div>
 	
@@ -15,10 +15,28 @@
 	<div class="p-modal hidden">
 		<section class="panel bg-white">
 			<div class="panel-heading p-modal-heading">
-				<strong>You have <span class="m-count">2</span> notifications</strong>
+				<strong>You have <span class="m-count"><%= user.messages.length %></span> notifications</strong>
 			</div>
 			<div class="list-group">
-				<a href="javascript:;" class="list-group-item media">
+				<% for(var i=0,len = user.messages.length;i< len;i++) { %>
+					<a href="/home/reply" class="list-group-item media" target="iframe">
+						<span class="text-center pull-left">
+							<i class="fa fa-envelope-o fa-2x text-success"></i>
+						</span>
+						<span class="media-body d-block">
+							<span class="m-message d-block"><%= user.messages[i].sender %> 
+							<% if(user.messages[i].type=="follower"){ %>	
+								给你留言了 
+							<% } else if (user.messages[i].type=="view"){ %>
+								查看了你
+							<% } else {%>
+								@你
+							<% } %>
+							</span>
+						</span>
+					</a>
+				<% } %>
+				<!-- <a href="javascript:;" class="list-group-item media">
 					<span class="text-center pull-left">
 						<i class="fa fa-envelope-o fa-2x text-success"></i>
 					</span>
@@ -33,7 +51,7 @@
 					<span class="media-body d-block">
 						<span class="m-message d-block">Alice leave a message for you !</span>
 					</span>
-				</a>
+				</a> -->
 			</div>
 		</section>
 	</div>
@@ -62,7 +80,7 @@
 				<div class="panel-body">
 					<dl>
 						<dd class="border-div"></dd>
-						<dd><a href="javascript:;"><img class="img-circle head head-f" src="../images/head-f.jpg" /><em class="u-name">Alice</em></a> <i class="fa fa-paper-plane pull-right"></i></dd>
+						<dd><a href="/home/chat" target="iframe"><img class="img-circle head head-f" src="../images/head-f.jpg" /><em class="u-name">Admin</em></a> <i class="fa fa-paper-plane pull-right"></i></dd>
 						<dd class="border-div"></dd>
 						<dd><a href="javascript:;"><img class="img-circle head head-m" src="../images/head-m.gif" /><em class="u-name">Sam</em></a> <i class="fa fa-paper-plane pull-right"></i></dd>
 					</dl>

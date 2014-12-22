@@ -21,35 +21,73 @@ var Message = require('../models/message');
  */
 
 /**
- * render chat
+ * render reply
  * */
-router.get('/chat',function(req,res){
+router.get('/reply',function(req,res){
 	var user = {};
 	user.username = req.session.username;
-	res.render('chat',{user:user});
+	Message.find({send_to:req.session._id,is_read:false},function(err,messages){
+		if(!err){
+			user.messages = messages;
+			res.render('reply',{user:user});
+		}
+	});
 });
 
 
 /**
- * handle chat post
+ * handle reply post
  * 
  * */
 
-router.post('/chat',function(req,res){
-	var message = new Message({
-		master_id : req.session._id,
-		content   : req.body.message,
-		create_at : req.body.dateStraing,
-		sendTo_id : req.session._id
+router.post('/reply',function(req,res){
+	User.find({username:req.body.sender},function(err,user){
+		console.log(user);
+		var message = new Message({
+			send_from : req.session._id,
+			send_to   : user[0]._id,
+			content   : req.body.message,
+			sender    : req.body.sender,
+			send_time : req.body.dateStraing,
+			type      : req.body.type
+		});
+		message.save(function(err,message){
+			if(!err){
+				res.status(200).send({
+					username : req.session.username,
+					message:'send success!'
+				});
+			}else{
+				res.redirect('/');
+			}
+		});
 	});
-	message.save(function(err,message){
+});
+
+router.get('/chat',function(req,res){
+	res.render('chat');
+});
+
+router.post('/chat',function(req,res){
+	User.find({username:req.body.sender},function(err,user){
 		if(!err){
-			res.status(200).send({
-				username : req.session.username,
-				message:'send success!'
+			var message = new Message({
+				send_from: req.session._id,
+				send_to  : user[0]._id,
+				content  : req.body.message,
+				sender   : req.session.username,
+				send_time: req.body.dateString ,
+				type     : req.body.type
 			});
-		}else{
-			res.redirect('/');
+			console.log(req.body);
+			message.save(function(err,message){
+				if(!err){
+					res.status(200).send({
+						username : req.session.username,
+						message:'send success!'
+					});
+				}
+			});
 		}
 	});
 });

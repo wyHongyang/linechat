@@ -177,10 +177,6 @@
 .svg-container .re-chat-content .chat-body .send-time {
   color: #b0b6ba;
 }
-.chat-container .chat-reply-container,
-.svg-container .chat-reply-container {
-  min-height: 250px;
-}
 .chat-container .send-m-content,
 .svg-container .send-m-content {
   margin-top: 20px;

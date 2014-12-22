@@ -97,6 +97,9 @@ header.navbar-inverse {
 .p-modal .list-group-item:hover {
   background-color: #ffffff;
 }
+.inline-b {
+  display: inline-block;
+}
 /* this is for arrow */
 .arrow-left-up {
   width: 0px;
@@ -194,23 +197,39 @@ header.navbar-inverse {
   line-height: 22px;
   margin-top: 4px;
   margin-right: 7px;
+  /*&:after{
+					content: '2';
+					display: block;
+					position: absolute;
+					width: 15px;
+					height: 15px;
+					font-size: 0.5em;
+					color:@title-color;
+					line-height: 1.2em;
+					vertical-align: middle;
+					right: 15px;
+					top: 60px;
+					z-index: 2;
+					background: rgba(92,154,66,.9);
+					text-align: center;
+					border-radius:@border-radius-s;					
+				}*/
 }
-.left-nav .personal-info .account .fa-comment-o:after {
-  content: '2';
-  display: block;
+.left-nav .personal-info .account .fa-comment-o .badge {
+  padding: 0;
   position: absolute;
+  top: 60px;
+  right: 15px;
+  z-index: 2;
+  background: rgba(92, 154, 66, 0.9);
+  text-align: center;
+  border-radius: 5px;
   width: 15px;
   height: 15px;
   font-size: 0.5em;
   color: #ffffff;
   line-height: 1.2em;
   vertical-align: middle;
-  right: 15px;
-  top: 60px;
-  z-index: 2;
-  background: rgba(92, 154, 66, 0.9);
-  text-align: center;
-  border-radius: 5px;
 }
 .left-nav .info-tips {
   padding: 10px 15px;

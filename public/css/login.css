@@ -88,6 +88,134 @@
   -moz-animation-iteration-count: infinite;
   -o-animation-iteration-count: infinite;
 }
+/* mixins css*/
+/* -weikit-scrollbar 
+ *@description 
+ * @scroll_width: scrollbar width
+ * @scroll_height: scrollbar height
+ * @b-radius: scrollbar border-radius
+*/
+.bg-white {
+  background: #ffffff;
+  margin: 0;
+}
+.text-center {
+  text-align: center;
+}
+.text-sm {
+  font-size: 0.75em;
+  line-height: 0.75em;
+  vertical-align: middle;
+}
+.text-success {
+  color: #1aae88;
+}
+.d-block {
+  display: block;
+}
+.head {
+  width: 25px;
+}
+.border-div {
+  height: 0px;
+  border: 1px solid #e1e6ef;
+  padding: 0;
+  margin: 25px -15px;
+}
+.p-modal {
+  width: 300px;
+  height: auto;
+  position: absolute;
+  left: 100%;
+  top: 20px;
+  z-index: 5;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+.p-modal:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50px;
+  left: -16px;
+  border-top: 8px solid transparent;
+  border-right: 8px solid rgba(255, 255, 255, 0.7);
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+.p-modal .p-modal-heading,
+.p-modal .list-group {
+  background-color: #f2f4f8;
+}
+.p-modal .p-modal-heading {
+  border-bottom: 1px solid #dddddd;
+}
+.p-modal .list-group-item {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 0;
+  background-color: #f2f4f8;
+}
+.p-modal .list-group-item:hover {
+  background-color: #ffffff;
+}
+.inline-b {
+  display: inline-block;
+}
+/* this is for arrow */
+.arrow-left-up {
+  width: 0px;
+  height: 0px;
+  position: relative;
+  z-index: 2;
+  /*border-color:#fff;*/
+  top: 17px;
+  left: -15px;
+  border-top: 8px solid transparent;
+  border-right: 8px solid #fff;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+.arrow-left-down {
+  width: 0px;
+  height: 0px;
+  position: relative;
+  z-index: 1;
+  top: 0px;
+  left: -18px;
+  /*border-color:#fff;*/
+  border-top: 9px solid transparent;
+  border-right: 9px solid #e1e6ef;
+  border-bottom: 9px solid transparent;
+  border-left: 9px solid transparent;
+}
+.arrow-right-up {
+  width: 0px;
+  height: 0px;
+  position: relative;
+  z-index: 2;
+  /*border-color:#fff;*/
+  top: 20px;
+  right: -100%;
+  border-top: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #fff;
+}
+.arrow-right-down {
+  width: 0px;
+  height: 0px;
+  position: relative;
+  z-index: 1;
+  top: 3px;
+  right: -100%;
+  /*border-color:#fff;*/
+  border-top: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 9px solid #e1e6ef;
+}
 body {
   background: url('../images/house.jpg') no-repeat;
   background-size: 100% auto;
@@ -148,6 +276,12 @@ body {
   font-size: 20px;
   line-height: 20px;
   color: #ffffff;
+}
+.form-horizontal .inline-b {
+  padding: 0 10px 0px 0px;
+}
+.form-horizontal .inline-b label {
+  margin: 0;
 }
 .form-horizontal div,
 .form-horizontal .form-group {

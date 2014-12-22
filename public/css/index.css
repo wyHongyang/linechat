@@ -70,6 +70,9 @@
 .p-modal .list-group-item:hover {
   background-color: #ffffff;
 }
+.inline-b {
+  display: inline-block;
+}
 /* this is for arrow */
 .arrow-left-up {
   width: 0px;
