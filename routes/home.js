@@ -112,7 +112,8 @@ router.get('/index',function(req,res){
 		if(!err){
 			user.username = docs[0].username;
 			var signupDate = docs[0].signupDate;
-			user.signupDate = (signupDate.getMonth()+1)+"/"+signupDate.getDate()+"/"+signupDate.getFullYear()+" "+signupDate.getHours()+":"+signupDate.getMinutes()+":"+signupDate.getSeconds();
+			user.signupDate = (signupDate.getMonth()+1)+"/"+signupDate.getDate()+"/"+signupDate.getFullYear()+" "+(signupDate.getHours()>9?signupDate.getHours():"0"+signupDate.getHours())+":"
+			+(signupDate.getMinutes()>9?signupDate.getMinutes(): "0"+signupDate.getMinutes())+":"+(signupDate.getSeconds()>9?signupDate.getSeconds():"0"+signupDate.getSeconds());
 			res.render('index',{ 
 				user:user,
 				follower:follower
