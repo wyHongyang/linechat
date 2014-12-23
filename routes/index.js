@@ -41,7 +41,6 @@ router.post('/signup',function(req,res){
 	});
 	user.save(function (err, user) {  
         if(!err) {  
-            console.log(user); 
             User.find(user,function(err,docs){
 	       		 if(!err){  
 	       	        if(docs!=''){  
@@ -74,9 +73,6 @@ router.post('/login',function(req,res){
 	 User.find(user,function(err,docs){
 		 if(!err){  
 	        if(docs!=''){  
-	            console.log(docs); 
-	            console.log(user); 
-	            console.log(req.session);
 	            req.session.username = docs[0].username;
 	            req.session._id = docs[0]._id;
 	            req.session.imageUrl = docs[0].profile_image_url;
@@ -101,8 +97,17 @@ router.get('/home',function(req,res){
 		if(!err){
 			user._id = req.session._id;
 			user.messages = messages;
-			console.log(user|user.messages.length);
 			res.render('home',{user:user});
+		}
+	});
+});
+
+router.post('/home',function(req,res,next){
+	req.session.cookie.send_from = req.body.send_from;
+	console.log(req.body.send_from);
+	req.session.save(function(err){
+		if(!err){
+			next();
 		}
 	});
 });

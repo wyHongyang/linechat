@@ -8,7 +8,7 @@
 	var $panelHeading = $('.panel-heading');
 	var $pModal = $('.p-modal');
 	var $pBadge = $('.p-badge');
-	var $item = $pModal.find('.list-group-item');
+	var $item   = $pModal.find('.list-group-item');
 	
 	$panelHeading.on('click',function(e){
 		var $this = $(this);
@@ -32,5 +32,24 @@
 			});
 		});		
 	}
+	
+	$item.on('click',function(e){
+		var $this = $(this);
+		var send_from = $this.find('.message-user').data();
+		$.ajax({
+			url:'/home',
+			data:{
+				send_from:send_from.id
+			},
+			type:'GET',
+			dataType:'json',
+			success:function(result){
+				
+			},
+			error:function(result){
+				
+			}
+		});
+	});
 	
 })(jQuery)

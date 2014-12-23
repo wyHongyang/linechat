@@ -11,52 +11,22 @@
 	var $panelGroup = $('.panel-group');
 	var $dd = $panelGroup.find('dd');
 	var $container = $('.chat-reply-container');
+	var $chater = $('.chat-title .chater');
 	
 	$sendMessage.on('click',function(){
 		var date = new Date();
-		var dateString = (date.getHours()>9?date.getHours():"0"+date.getHours())+":"+(date.getMinutes()>9?date.getMinutes():"0"+date.getMinutes())+":"+(date.getSeconds()>9?date.getSeconds():"0"+date.getSeconds())+" "
-		+(date.getMonth()+1)+"/"+date.getDate()+"/"+date.getFullYear();
+		var dateString = $.formatTime(date);
 		var $this = $(this);
 		var text = $message.val();
 		var imageSrc = $this.parents('.chat-item').find('.img-circle').attr('src');
 		if(text.trim()!= ""){
-//			var html = '<section class="re-chat-content">'+
-//					   '<article class="chat-item">'+
-//					   '<a href="javascript:;" class="pull-right ">'+
-//					   '<img class="img-circle head head-m" src='+imageSrc+' /></a>'+
-//					   '<section class="chat-body">'+
-//					   '<div class="panel text-sm">'+
-//					   '<div class="arrow-right-up"></div>'+
-//					   '<div class="arrow-right-down"></div>'+
-//					   '<div class="panel-body">'+
-//					   '<p>'+text+'</p></div></div>'+
-//					   '<small class="send-time">Sam ,'+dateString+'</small></section></article></section>';   
-//			$borderDiv.before(html);
-//			$message.val('');
-			/*
-			 * 这里需要将数据ajax给后台
-			 * $.ajax({
-			 * 	url:"",
-			 * 	data: {message : text,
-			 * 		   dateString : dateString 			
-			 * 	},
-			 * 	type: 'POST',
-			 * 	dataType :'json',
-			 * 	success: function(result){
-			 * 
-			 * 	},
-			 * error: function(result){
-			 * 	// 这里需要进行提示 可以采用notify 或者直接提示	
-			 * }
-			 * });
-			 * */
 			$.ajax({
 				url:'/home/chat',
 				data:{
 					message:text,
 					dateString:dateString,
-					sender:$chatTitle.text().split(' ')[2].toLowerCase(),
-					type : "follower"
+					sendTo:$chater.text().toLowerCase(),
+					type : "send"
 				},
 				type:'POST',
 				dataType:'json',

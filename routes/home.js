@@ -26,10 +26,16 @@ var Message = require('../models/message');
 router.get('/reply',function(req,res){
 	var user = {};
 	user.username = req.session.username;
-	Message.find({send_to:req.session._id,is_read:false},function(err,messages){
+	user.imageUrl = req.session.imageUrl;
+	console.log(req.session);
+	Message.find({send_to:req.session._id,send_from:req.session.send_from },function(err,messages){
 		if(!err){
-			user.messages = messages;
-			res.render('reply',{user:user});
+			if(messages.length){
+				user.messages = messages[0];
+				res.render('reply',{user:user});
+			}else{
+				res.redirect('/home')
+			}
 		}
 	});
 });
@@ -41,26 +47,57 @@ router.get('/reply',function(req,res){
  * */
 
 router.post('/reply',function(req,res){
-	User.find({username:req.body.sender},function(err,user){
-		console.log(user);
-		var message = new Message({
-			send_from : req.session._id,
-			send_to   : user[0]._id,
-			content   : req.body.message,
-			sender    : req.body.sender,
-			send_time : req.body.dateStraing,
-			type      : req.body.type
-		});
-		message.save(function(err,message){
-			if(!err){
-				res.status(200).send({
-					username : req.session.username,
-					message:'send success!'
-				});
-			}else{
-				res.redirect('/');
-			}
-		});
+	User.find({username:req.body.sendTo},function(err,user){
+//		var message = new Message({
+//			send_from : req.session._id,
+//			send_to   : user[0]._id,
+//			content   : req.body.message,
+//			sender    : req.body.sender,
+//			send_time : req.body.dateString,
+//			type      : req.body.type
+//		});
+//		message.save(function(err,message){
+//			if(!err){
+//				res.status(200).send({
+//					username : req.session.username,
+//					message:'send success!'
+//				});
+//			}else{
+//				res.redirect('/');
+//			}
+//		});
+		if(!err){
+			Message.find({ send_from : req.session._id ,
+				send_to: user[0]._id 
+			},function(err,docs){
+				if(!err){
+					if(docs){
+						docs[0].content.push({
+							body:req.body.message,
+							send_time:req.body.dateString
+						});
+					}else{
+						var message = new Message;
+							message.send_from = req.session._id;
+							message.send_to   = user[0]._id ;
+							message.sender	  = req.session.username;
+							message.type	  = req.body.type;
+							message.content.push({
+								body:req.body.message,
+								send_time:req.body.dateString
+							});
+							message.save(function(err,message){
+								if(!err){
+									res.status(200).send({
+										username : req.session.username,
+										message:'send success!'
+									});
+								}
+							});
+					}
+				}
+			});
+		}
 	});
 });
 
@@ -69,23 +106,49 @@ router.get('/chat',function(req,res){
 });
 
 router.post('/chat',function(req,res){
-	User.find({username:req.body.sender},function(err,user){
+	User.find({username:req.body.sendTo},function(err,user){
 		if(!err){
-			var message = new Message({
-				send_from: req.session._id,
-				send_to  : user[0]._id,
-				content  : req.body.message,
-				sender   : req.session.username,
-				send_time: req.body.dateString ,
-				type     : req.body.type
-			});
-			console.log(req.body);
-			message.save(function(err,message){
+//			var message = new Message({
+//				send_from: req.session._id,
+//				send_to  : user[0]._id,
+//				content  : req.body.message,
+//				sender   : req.session.username,
+//				send_time: req.body.dateString ,
+//				type     : req.body.type
+//			});
+			/**
+			 * 这里需要判断:是否是已经存在了content
+			 * 
+			 * */
+			Message.find({ send_from : req.session._id ,
+				send_to: user[0]._id 
+			},function(err,docs){
+				console.log(docs);
 				if(!err){
-					res.status(200).send({
-						username : req.session.username,
-						message:'send success!'
-					});
+					if(docs.length){
+						docs[0].content.push({
+							body:req.body.message,
+							send_time:req.body.dateString
+						});
+					}else{
+						var message = new Message;
+							message.send_from = req.session._id;
+							message.send_to   = user[0]._id ;
+							message.sender	  = req.session.username;
+							message.type	  = req.body.type;
+							message.content.push({
+								body:req.body.message,
+								send_time:req.body.dateString
+							});
+							message.save(function(err,message){
+								if(!err){
+									res.status(200).send({
+										username : req.session.username,
+										message:'send success!'
+									});
+								}
+							});
+					}
 				}
 			});
 		}

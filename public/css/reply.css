@@ -188,6 +188,7 @@
 .chat-container .chat-content,
 .svg-container .chat-content {
   margin-top: 15px;
+  min-height: 250px;
 }
 .chat-container .chat-content .chat-body,
 .svg-container .chat-content .chat-body {

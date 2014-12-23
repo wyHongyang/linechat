@@ -15,7 +15,7 @@
 	<div class="p-modal hidden">
 		<section class="panel bg-white">
 			<div class="panel-heading p-modal-heading">
-				<strong>You have <span class="m-count"><%= user.messages.length %></span> notifications</strong>
+				<strong>你有 <span class="m-count"><%= user.messages.length %></span> 条通知</strong>
 			</div>
 			<div class="list-group">
 				<% for(var i=0,len = user.messages.length;i< len;i++) { %>
@@ -24,9 +24,11 @@
 							<i class="fa fa-envelope-o fa-2x text-success"></i>
 						</span>
 						<span class="media-body d-block">
-							<span class="m-message d-block"><%= user.messages[i].sender %> 
-							<% if(user.messages[i].type=="follower"){ %>	
+							<span class="m-message d-block"><em class="message-user" data-id="<%= user.messages[i].send_from %>"><%= user.messages[i].sender %></em>
+							<% if(user.messages[i].type=="send"){ %>	
 								给你留言了 
+							<% }else if (user.messages[i].type=="reply"){%>
+								回复了你	
 							<% } else if (user.messages[i].type=="view"){ %>
 								查看了你
 							<% } else {%>
@@ -80,9 +82,9 @@
 				<div class="panel-body">
 					<dl>
 						<dd class="border-div"></dd>
-						<dd><a href="/home/chat" target="iframe"><img class="img-circle head head-f" src="../images/head-f.jpg" /><em class="u-name">Admin</em></a> <i class="fa fa-paper-plane pull-right"></i></dd>
+						<dd><a href="/home/chat" target="iframe"><img class="img-circle head head-f" src="../images/head-f.jpg" /><em class="u-name">Admin</em><i class="fa fa-paper-plane pull-right"></i></a></dd>
 						<dd class="border-div"></dd>
-						<dd><a href="javascript:;"><img class="img-circle head head-m" src="../images/head-m.gif" /><em class="u-name">Sam</em></a> <i class="fa fa-paper-plane pull-right"></i></dd>
+						<dd><a href="javascript:;"><img class="img-circle head head-m" src="../images/head-m.gif" /><em class="u-name">Sam<i class="fa fa-paper-plane pull-right"></i></em></a> </dd>
 					</dl>
 				</div>
 			</div>
@@ -104,9 +106,9 @@
 				<div class="panel-body">
 					<dl>
 						<dd class="border-div"></dd>
-						<dd><a href="javascript:;"><img class="img-circle head head-f" src="../images/head-f.jpg" /><em class="u-name">Yummy</em></a> <i class="fa fa-paper-plane pull-right"></i></dd>
+						<dd><a href="javascript:;"><img class="img-circle head head-f" src="../images/head-f.jpg" /><em class="u-name">Yummy</em> <i class="fa fa-paper-plane pull-right"></i></a></dd>
 						<dd class="border-div"></dd>
-						<dd><a href="javascript:;"><img class="img-circle head head-m" src="../images/head-m.gif" /><em class="u-name">Slice</em></a> <i class="fa fa-paper-plane pull-right"></i></dd>
+						<dd><a href="javascript:;"><img class="img-circle head head-m" src="../images/head-m.gif" /><em class="u-name">Slice</em> <i class="fa fa-paper-plane pull-right"></i></a></dd>
 					</dl>
 				</div>
 			</div>

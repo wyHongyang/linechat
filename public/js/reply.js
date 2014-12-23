@@ -12,6 +12,7 @@
 	var $sendMessage = $('#replySendMessage');
 	var $message = $('#replyMessage');
 	var $borderDiv = $('.border-div');
+	var $replier = $('.chat-title .replier');
 	
 //	$dd.on('click',function(e){
 //		var $this = $(this);
@@ -23,8 +24,7 @@
 	
 	$sendMessage.on('click',function(){
 		var date = new Date();
-		var dateString = (date.getHours()>9?date.getHours():"0"+date.getHours())+":"+(date.getMinutes()>9?date.getMinutes():"0"+date.getMinutes())+":"+(date.getSeconds()>9?date.getSeconds():"0"+date.getSeconds())+" "
-		+(date.getMonth()+1)+"/"+date.getDate()+"/"+date.getFullYear();
+		var dateString = $.formatTime(date);
 		var $this = $(this);
 		var text = $message.val();
 		var imageSrc = $this.parents('.chat-item').find('.img-circle').attr('src');
@@ -34,8 +34,8 @@
 				data:{
 					message:text,
 					dateString:dateString,
-					sender:$chatTitle.text().split(' ')[2].toLowerCase(),
-					type : "follower"
+					sendTo:$replier.text().toLowerCase(),
+					type : "reply"
 				},
 				type:'POST',
 				dataType:'json',
@@ -69,4 +69,5 @@
 			$sendMessage.click();
 		}		
 	});
+	
 })(jQuery);

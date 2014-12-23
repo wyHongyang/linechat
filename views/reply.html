@@ -5,24 +5,24 @@
 	<div class="chat-main row">
 		<div class="chat-container col-sm-6">
 			<div class="chat-title">
-				<span>Replay to 洪阳</span>
+				<span>Replay to <em class="replier" data-id="">洪阳</em></span>
 			</div>
 			
 			<section class="chat-content">
-				<% for(var i=0,len = user.messages.length;i< len;i++){ %>
+				<% for(var i=0,len = user.messages.content.length;i< len;i++){ %>
 					<article class="chat-item">
 						<a href="javascript:;" class="pull-left ">
-							<img class="img-circle head head-f" src="../images/head-f.jpg" />
+							<img class="img-circle head head-f" src="<%= user.imageUrl %>" />
 						</a>
 						<section class="chat-body">
 							<div class="panel text-sm">
 								<div class="arrow-left-up"></div>
 								<div class="arrow-left-down"></div>
 								<div class="panel-body">
-									<p><%= user.messages[i].content %></p>
+									<p><%= user.messages.content[i].body %></p>
 								</div>
 							</div>
-							<small class="send-time"><%= user.messages[i].sender %>, <%= user.messages[i].send_time %></small>
+							<small class="send-time"><%= user.messages.sender %>, <%= user.messages.content[i].send_time %></small>
 						</section>
 					</article>
 				<% } %>
