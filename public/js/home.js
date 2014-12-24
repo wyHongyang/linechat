@@ -10,7 +10,6 @@
 	var $pBadge = $('.p-badge');
 	var $item   = $pModal.find('.list-group-item');
 	var $pBody  = $('.panel-body dd');
-	var $chater = $('.chater');
 	
 	$panelHeading.on('click',function(e){
 		var $this = $(this);
@@ -57,9 +56,8 @@
 	$pBody.on('click',function(e){
 		var $this = $(this);
 		var send_to = $this.find('.u-name').text();
-		$chater.html(send_to);
 		$.ajax({
-			url:'/home/chat',
+			url:'/home',
 			data:{
 				send_to : send_to
 			},

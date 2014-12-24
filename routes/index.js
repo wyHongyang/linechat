@@ -91,6 +91,7 @@ router.post('/login',function(req,res){
 
 router.get('/home',function(req,res){
 	var user = {};
+	console.log(req.query.send_to);
 	user.username = req.session.username;
 	user.imageUrl = req.session.imageUrl;
 	Message.find({send_to:req.session._id},function(err,messages){
