@@ -7,6 +7,7 @@
 }
 
 .chat-container, .svg-container{
+	height:425px;
 	padding: 0px 15px 30px 15px;
 	border-radius: @border-radius-s;
 	border: 1px solid gainsboro;
@@ -27,6 +28,11 @@
 			margin-left:15px;
 		}
 	}
+	.chat-reply-container{
+		height:270px;
+		overflow-x:hidden;
+		overflow-y:auto;
+	}
 	.re-chat-content{
 		margin-top:@margin-l;
 		.chat-body{
@@ -43,9 +49,6 @@
 				color:@chat-small-color;
 			}
 		}
-	}
-	.chat-reply-container{
-		min-height:250px;
 	}
 	.send-m-content{
 		margin-top:@margin-x;

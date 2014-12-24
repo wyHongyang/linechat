@@ -13,7 +13,8 @@
 	var $message = $('#replyMessage');
 	var $borderDiv = $('.border-div');
 	var $replier = $('.chat-title .replier');
-	
+	var $chatContent  =$('.chat-content');
+	var $replyContainer	= $('.reply-content-container');
 //	$dd.on('click',function(e){
 //		var $this = $(this);
 //		$this.addClass('active').siblings('dd').removeClass('active').end().parents('.panel-default')
@@ -51,7 +52,7 @@
 					   '<div class="panel-body">'+
 					   '<p>'+text+'</p></div></div>'+
 					   '<small class="send-time">'+result.username+' ,'+dateString+'</small></section></article></section>';   
-					$borderDiv.before(html);
+					$replyContainer.append(html);
 					$message.val('');
 				},
 				error:function(result){

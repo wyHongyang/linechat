@@ -132,6 +132,7 @@
 }
 .chat-container,
 .svg-container {
+  height: 425px;
   padding: 0px 15px 30px 15px;
   border-radius: 5px;
   border: 1px solid gainsboro;
@@ -155,6 +156,12 @@
 .svg-container .chat-title span {
   margin-left: 15px;
 }
+.chat-container .chat-reply-container,
+.svg-container .chat-reply-container {
+  height: 270px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 .chat-container .re-chat-content,
 .svg-container .re-chat-content {
   margin-top: 15px;
@@ -176,10 +183,6 @@
 .chat-container .re-chat-content .chat-body .send-time,
 .svg-container .re-chat-content .chat-body .send-time {
   color: #b0b6ba;
-}
-.chat-container .chat-reply-container,
-.svg-container .chat-reply-container {
-  min-height: 250px;
 }
 .chat-container .send-m-content,
 .svg-container .send-m-content {

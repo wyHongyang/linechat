@@ -132,6 +132,7 @@
 }
 .chat-container,
 .svg-container {
+  height: 425px;
   padding: 0px 15px 30px 15px;
   border-radius: 5px;
   border: 1px solid gainsboro;
@@ -154,6 +155,12 @@
 .chat-container .chat-title span,
 .svg-container .chat-title span {
   margin-left: 15px;
+}
+.chat-container .reply-content-container,
+.svg-container .reply-content-container {
+  height: 270px;
+  overflow-x: hiddden;
+  overflow-y: auto;
 }
 .chat-container .re-chat-content,
 .svg-container .re-chat-content {
@@ -188,7 +195,14 @@
 .chat-container .chat-content,
 .svg-container .chat-content {
   margin-top: 15px;
-  min-height: 250px;
+}
+.chat-container .chat-content .chat-item:first-child,
+.svg-container .chat-content .chat-item:first-child {
+  margin-bottom: 15px;
+}
+.chat-container .chat-content .chat-item:nth-child(n+2),
+.svg-container .chat-content .chat-item:nth-child(n+2) {
+  margin: 15px 0;
 }
 .chat-container .chat-content .chat-body,
 .svg-container .chat-content .chat-body {

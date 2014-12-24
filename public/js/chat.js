@@ -42,7 +42,7 @@
 					   '<div class="panel-body">'+
 					   '<p>'+text+'</p></div></div>'+
 					   '<small class="send-time">'+result.username+' ,'+dateString+'</small></section></article></section>';   
-					$container.before(html);
+					$container.append(html);
 					$message.val('');
 				},
 				error:function(result){

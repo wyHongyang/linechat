@@ -5,11 +5,11 @@
 	<div class="chat-main row">
 		<div class="chat-container col-sm-6">
 			<div class="chat-title">
-				<span>Replay to <em class="replier" data-id="">洪阳</em></span>
+				<span>Replay to <em class="replier" data-id=""><%= user.messages.sender %></em></span>
 			</div>
-			
-			<section class="chat-content">
+			<section class="reply-content-container">
 				<% for(var i=0,len = user.messages.content.length;i< len;i++){ %>
+				<section class="chat-content">
 					<article class="chat-item">
 						<a href="javascript:;" class="pull-left ">
 							<img class="img-circle head head-f" src="<%= user.imageUrl %>" />
@@ -25,6 +25,7 @@
 							<small class="send-time"><%= user.messages.sender %>, <%= user.messages.content[i].send_time %></small>
 						</section>
 					</article>
+				</section>
 				<% } %>
 			</section>
 			<!-- border-div -->

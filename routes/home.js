@@ -20,6 +20,7 @@ var Message = require('../models/message');
   
  */
 
+
 /**
  * render reply
  * */
@@ -28,13 +29,19 @@ router.get('/reply',function(req,res){
 	user.username = req.session.username;
 	user.imageUrl = req.session.imageUrl;
 	console.log(req.session);
-	Message.find({send_to:req.session._id,send_from:req.session.send_from },function(err,messages){
+	Message.find({send_to:req.session._id },function(err,messages){
 		if(!err){
 			if(messages.length){
 				user.messages = messages[0];
 				res.render('reply',{user:user});
+				for(var i =0 ,len =messages[0].content.length;i<len;i++ ){
+					messages[0].content[i].is_read = true ;
+				}
+				messages[0].save(function(err,docs){
+					
+				});
 			}else{
-				res.redirect('/home')
+				res.redirect('/home');
 			}
 		}
 	});
@@ -71,10 +78,18 @@ router.post('/reply',function(req,res){
 				send_to: user[0]._id 
 			},function(err,docs){
 				if(!err){
-					if(docs){
+					if(docs.length){
 						docs[0].content.push({
 							body:req.body.message,
 							send_time:req.body.dateString
+						});
+						docs[0].save(function(err,docs){
+							if(!err){
+								res.status(200).send({
+									username : req.session.username,
+									message:'send success!'
+								});
+							}
 						});
 					}else{
 						var message = new Message;
@@ -129,6 +144,14 @@ router.post('/chat',function(req,res){
 						docs[0].content.push({
 							body:req.body.message,
 							send_time:req.body.dateString
+						});
+						docs[0].save(function(err,docs){
+							if(!err){
+								res.status(200).send({
+									username : req.session.username,
+									message:'send success!'
+								});
+							}
 						});
 					}else{
 						var message = new Message;
