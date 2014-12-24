@@ -117,6 +117,7 @@ router.post('/reply',function(req,res){
 });
 
 router.get('/chat',function(req,res){
+	console.log(req.body.send_to);
 	res.render('chat');
 });
 

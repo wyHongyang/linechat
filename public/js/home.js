@@ -9,6 +9,8 @@
 	var $pModal = $('.p-modal');
 	var $pBadge = $('.p-badge');
 	var $item   = $pModal.find('.list-group-item');
+	var $pBody  = $('.panel-body dd');
+	var $chater = $('.chater');
 	
 	$panelHeading.on('click',function(e){
 		var $this = $(this);
@@ -37,9 +39,29 @@
 		var $this = $(this);
 		var send_from = $this.find('.message-user').data();
 		$.ajax({
-			url:'/home',
+			url:'/home/chat',
 			data:{
 				send_from:send_from.id
+			},
+			type:'GET',
+			dataType:'json',
+			success:function(result){
+				
+			},
+			error:function(result){
+				
+			}
+		});
+	});
+	
+	$pBody.on('click',function(e){
+		var $this = $(this);
+		var send_to = $this.find('.u-name').text();
+		$chater.html(send_to);
+		$.ajax({
+			url:'/home/chat',
+			data:{
+				send_to : send_to
 			},
 			type:'GET',
 			dataType:'json',
