@@ -91,7 +91,6 @@ router.post('/login',function(req,res){
 
 router.get('/home',function(req,res){
 	var user = {};
-	console.log(req.query.send_to);
 	user.username = req.session.username;
 	user.imageUrl = req.session.imageUrl;
 	Message.find({send_to:req.session._id},function(err,messages){
@@ -104,8 +103,6 @@ router.get('/home',function(req,res){
 });
 
 router.post('/home',function(req,res,next){
-	req.session.cookie.send_from = req.body.send_from;
-	console.log(req.body.send_from);
 	req.session.save(function(err){
 		if(!err){
 			next();

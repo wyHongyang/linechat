@@ -53,23 +53,23 @@
 		});
 	});
 	
-	$pBody.on('click',function(e){
-		var $this = $(this);
-		var send_to = $this.find('.u-name').text();
-		$.ajax({
-			url:'/home',
-			data:{
-				send_to : send_to
-			},
-			type:'GET',
-			dataType:'json',
-			success:function(result){
-				
-			},
-			error:function(result){
-				
-			}
-		});
-	});
+//	$pBody.on('click',function(e){
+//		var $this = $(this);
+//		var send_to = $this.find('.u-name').text();
+//		$.ajax({
+//			url:'/chatWith',
+//			data:{
+//				chatWith : send_to
+//			},
+//			type:'POST',
+//			dataType:'json',
+//			success:function(result){
+//				
+//			},
+//			error:function(result){
+//				
+//			}
+//		});
+//	});
 	
 })(jQuery)

@@ -28,7 +28,6 @@ router.get('/reply',function(req,res){
 	var user = {};
 	user.username = req.session.username;
 	user.imageUrl = req.session.imageUrl;
-	console.log(req.session);
 	Message.find({send_to:req.session._id },function(err,messages){
 		if(!err){
 			if(messages.length){
@@ -117,8 +116,9 @@ router.post('/reply',function(req,res){
 });
 
 router.get('/chat',function(req,res){
-	console.log(req.body.send_to);
-	res.render('chat');
+	res.render('chat',{
+		chatWith:req.query.chatWith
+	});
 });
 
 router.post('/chat',function(req,res){

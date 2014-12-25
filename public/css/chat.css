@@ -161,6 +161,7 @@
   height: 270px;
   overflow-x: hidden;
   overflow-y: auto;
+  padding-right: 10px;
 }
 .chat-container .re-chat-content,
 .svg-container .re-chat-content {
