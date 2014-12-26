@@ -25,13 +25,6 @@ header.navbar-inverse {
   font-weight: bold;
   color: #fff;
 }
-/* mixins css*/
-/* -weikit-scrollbar 
- *@description 
- * @scroll_width: scrollbar width
- * @scroll_height: scrollbar height
- * @b-radius: scrollbar border-radius
-*/
 .bg-white {
   background: #ffffff;
   margin: 0;
@@ -40,8 +33,8 @@ header.navbar-inverse {
   text-align: center;
 }
 .text-sm {
-  font-size: 0.75em;
-  line-height: 0.75em;
+  font-size: 12px;
+  line-height: 12px;
   vertical-align: middle;
 }
 .text-success {
@@ -333,6 +326,13 @@ header.navbar-inverse {
   padding: 0;
   margin: 0;
 }
+/* mixins css*/
+/* -weikit-scrollbar 
+ *@description 
+ * @scroll_width: scrollbar width
+ * @scroll_height: scrollbar height
+ * @b-radius: scrollbar border-radius
+*/
 body {
   height: 100%;
   width: 100%;

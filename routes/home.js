@@ -23,6 +23,7 @@ var Message = require('../models/message');
 
 /**
  * render reply
+ * 
  * */
 router.get('/reply',function(req,res){
 	var user = {};
