@@ -8,7 +8,9 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var Message = require('../models/message');
-
+var mess = require('../models/mess');
+var Ralation = mess.Relation;
+var Content  = mess.Content;
 /*
  * home.js 处理所有 /home/* 的router所有
  **********************************************
@@ -140,8 +142,33 @@ router.post('/chat',function(req,res){
 			Message.find({ send_from : req.session._id ,
 				send_to: user[0]._id 
 			},function(err,docs){
-				console.log(docs);
 				if(!err){
+					var ralation = new Ralation({
+						sender:'1',
+						sender_id:req.session._id,
+						receiver :'231',
+						receive_id :req.session._id
+					});
+					ralation.save(function(err,message){
+//						console.log(message);
+						var content = new Content({
+							_creator : message._id,
+							send_time: '1'
+						});
+						content.save(function(err,content){
+//							console.log(content);
+							if(err){
+								console.log(err);
+							}
+							console.log(content);
+						});
+					});
+					Content.find({
+						send_time:'1'
+					}).populate('_creator','sender')
+					.exec(function(err,sec){
+						console.log(sec);
+					});
 					if(docs.length){
 						docs[0].content.push({
 							body:req.body.message,
@@ -156,6 +183,23 @@ router.post('/chat',function(req,res){
 							}
 						});
 					}else{
+						var ralation = new Ralation({
+							sender:'1',
+							sender_id:req.session._id,
+							receiver :'2',
+							receive_id :req.session._id
+						});
+						ralation.save(function(err,message){
+							var content = new Content({
+								relation : message[0]._id,
+								send_time: '1',
+								
+							});
+							console.log(message);
+							content.save(function(err,content){
+								console.log(content);
+							});
+						});
 						var message = new Message;
 							message.send_from = req.session._id;
 							message.send_to   = user[0]._id ;
