@@ -1,7 +1,7 @@
 /**
  * message change schema 
  * @description 用于聊天，回复
- * MessageSchema
+ * MessageCreatorSchema
  * @field sender 发送人
  * @field send_id 发送人的id
  * @field receiver 接收人
@@ -14,7 +14,7 @@ var mongoose = require('mongoose'),
 	Schema 	 = mongoose.Schema ,
 	ObjectId = Schema.ObjectId;
 
-var RelationSchema = new Schema({
+var CreatorSchema = new Schema({
 	sender 	   : { type:String, required:true },
 	sender_id  : { type:ObjectId, required:true },
 	receiver   : { type:String, required:true },
@@ -35,12 +35,15 @@ var RelationSchema = new Schema({
  */
 
 var ContentSchema = Schema({
-	_creator     : { type:ObjectId, ref: 'Relation' },//匹配
+	_creator     : { type:Schema.Types.ObjectId, ref: 'Creator' },//匹配
 	send_time    : { type:String, required:true },
 	send_content : { type:String },
 	is_read      : { type:Boolean, default:false},
 	type         : { type:Number, default:0 }
 });
 
-var Relation = exports.Relation = mongoose.model('Relation', RelationSchema);
-var Content  = exports.Content  = mongoose.model('Content', ContentSchema);
+var Creator = mongoose.model('Relation', CreatorSchema);
+var Content  = mongoose.model('Content', ContentSchema);
+
+exports.Creator = mongoose.model('Relation', CreatorSchema);
+exports.Content  = mongoose.model('Content', ContentSchema);
