@@ -231,8 +231,6 @@ router.post('/chat',function(req,res){
  * */
 
 router.get('/index',function(req,res){
-	
-	
 	var follower = {
 		follower:'12',
 		viewer:'2',
