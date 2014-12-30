@@ -43,14 +43,14 @@
 (function(factory){
 	if(typeof define==="function" && define['amd']){
 		define(['jquery'],factory);
-	}elss{
+	}else{
 		factory(jQuery);
 	}
 }(function($){
 	var Pagination = function(el,options){
 		var me = this ;
 		this.$el = $(el);
-		this.options = $.extend({},Pagiantion.options,options);
+		this.options = $.extend({},Pagination.options,options);
 		this.params  = $.extend({},Pagination.options.params,options.params);
 		this.isFetching = false ;
 		this.$el.on('click','.page-prev:not(.disabled)',function(e){
@@ -96,28 +96,28 @@
 	Pagination.prototype.constructor = Pagination;
 	
 	Pagination.prototype = {
-		init  : function(params){
+		init  : function(this.params){
 			var me = this;
 			me.fetch(params);
-			var pageHtml = '<nav><li class="page-first disabled"><a href="javascript:;">'+me.page[me.options.language].fisrt+'</a></li>'
+			var pageHtml = '<nav><li class="page-first disabled"><a href="javascript:;">'+me.page[me.options.language].first+'</a></li>'
 						   +'<li class="page-prev disabled"><a href="javascript;;">'+me.page[me.options.language].prev+'</a></li>'	
-						   +'<li class="page-number current"><a href="javascript:;">'1'</a></li>'
+						   +'<li class="page-number current"><a href="javascript:;">'+1+'</a></li>'
 						   +'<li class="page-next disabled"><a href="javascript:;">'+me.page[me.options.language].next+'</a></li>'
 						   +'<li class="page-last disabled"><a href="javascript:;">'+me.page[me.options.language].last+'</a></li>'
 						   +'<li class="page-skip disabled">skip to <input type="text" value="1"/><input type="button" value="'+me.page[me.options.language].skip+'"/></li></nav>';
 			
 			if(me.options.totalPage<=3){
 				var append ;
-				me.options.totalPage<3?(append='<li class="page-number"><a href="javascript:;">'2'</a>'):(append='<li class="page-number"><a href="javascript:;">'2'</a></li>'+
-						'<li class="page-number"><a href="javascript:;">'3'</a></li>');
+				me.options.totalPage<3?(append='<li class="page-number"><a href="javascript:;">'+2+'</a>'):(append='<li class="page-number"><a href="javascript:;">'+2+'</a></li>'+
+						'<li class="page-number"><a href="javascript:;">'+3+'</a></li>');
 				
 				$(pageHtml).find('.current').append(append).end()
 				.find('.page-next,.page-last').removeClass('disabled');
 			}
 			if(me.options.totalPage>3){
-				var append = '<li class="page-number"><a href="javascript:;">'2'</a></li>'
-							 +'<li class="page-number"><a href="javascript:;">'3'</a></li>'
-							 +'<li class="page-number"><a href="javascript:;">'...'</a></li>'
+				var append = '<li class="page-number"><a href="javascript:;">'+2+'</a></li>'
+							 +'<li class="page-number"><a href="javascript:;">'+3+'</a></li>'
+							 +'<li class="page-number"><a href="javascript:;">'+"..."+'</a></li>'
 							 +'<li class="page-number"><a href="javascript:;">'+me.options.totalPage+'</a></li>';
 				$(pageHtml).find('.current').append(append).end()
 				.find('.page-next,.page-last').removeClass('disabled');
