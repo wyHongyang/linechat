@@ -39,47 +39,6 @@
 //	
 //}));
 
-/**
- *  ajax pagination for jquery
- * 
- */
-/**
- * 
- * 常见匿名函数的写法
- * 1.最常见
- * (function(){})();
- * 2.void function(){
- * }();//效率最高
- * 3.+function(){
- * }();
- * 4.-function(){
- * }();
- * 5.~function(){
- * }();
- * 6.!funciton(){
- * }();
- * 7.(function(){
- * }());// 有点强制执行
- * 8.~(function(){
- * })();//cool
- * 
- */
-//模块化写法
-//(function(root,factory){
-//	if(typeof define ==="function" && define['amd']){
-//		define(['jquery'],function(root,$){
-//			root.pagination = factory(root,$);
-//		});
-//	}else if(typeof exports !=="undefined"){
-//		var target = module['jquery'] || exports ;
-//		root.pagination = facroty(root,target);
-//	}else{
-//		root.pagination = factory(root,root.jQuery || root.Zepto );
-//	}
-//})(this,function($){
-//	
-//}));
-
 //插件写法
 (function(factory){
 	if(typeof define==="function" && define['amd']){
