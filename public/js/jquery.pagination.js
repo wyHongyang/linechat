@@ -208,7 +208,7 @@
 			 * 
 			 * */
 			var content ;
-			me.options.totalPage = result.totalPage || 6;
+			me.options.totalPage = result.totalPage || 1;
 			content = result.content ;
 			me.$el.find('.page-prev,.page-first')[(params.pageNumber>1?'removeClass':(params.pageNumber==me.options.totalPage?'addClass':'removeClass'))]('disabled');
 			me.$el.find('.page-next,.page-last')[(params.pageNumber<me.options.totalPage?'removeClass':'addClass')]('disabled');
