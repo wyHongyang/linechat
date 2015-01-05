@@ -42,9 +42,9 @@
 	    var result = Dropdown.fetch(this.options));
 	    $.each(result.content,function(i,n){
 	      if(result.currentSelect==n.value){
-	        html+='<option data-value="'+n.value+'" selected="selected">'+n.label+'</option>';
+	        html+='<option data-value="'+n.value+'" selected="selected" value="'+n.value+'">'+n.label+'</option>';
 	      }else{
-	        html+='<option data-value="'+n.value+'">'+n.label+'</option>';
+	        html+='<option data-value="'+n.value+'" value="'+n.value+'">'+n.label+'</option>';
 	      }
 	    }); 
 	    me.append(html+'</select>');
