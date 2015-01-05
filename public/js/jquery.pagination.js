@@ -145,7 +145,7 @@
 		   next : '>',
 		   first: '<<',
 		   last : '>>',
-      skipTo: 'skip to',  
+		   skipTo: 'skip to',  
 		   skip : 'go'
 		},
 		cn : {
@@ -153,7 +153,7 @@
 		   next : '下一页',
 		   first: '第一页',
 		   last : '最后一页',
-       skipTo: '跳转到',
+		   skipTo: '跳转到',
 		   skip : '确定'
 		}
 	};
