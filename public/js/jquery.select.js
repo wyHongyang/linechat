@@ -26,7 +26,7 @@
 	    selectClass : 'jq-select',
 	    selectCss : {
 	    	borderRadius:'4px',
-			minWidth:'80px'
+			minWidth:'160px'
 	    }, 
 	    optionClass : 'jq-option',
 	    currentSelect: '0',
