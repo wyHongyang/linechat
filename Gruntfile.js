@@ -14,7 +14,8 @@ module.exports = function(grunt){
 					'public/css/home.css'  : 'public/less/home.less',
 					'public/css/chat.css'  : 'public/less/chat.less',
 					'public/css/index.css' : 'public/less/index.less',
-					'public/css/reply.css' : 'public/less/reply.less'
+					'public/css/reply.css' : 'public/less/reply.less',
+					'public/css/pagination.css' : 'public/less/pagination.less'
 				}
 			},
 			compileMain: {
@@ -41,7 +42,8 @@ module.exports = function(grunt){
                 	'public/css/home.min.css'  : 'public/css/home.css',
                 	'public/css/chat.min.css'  : 'public/css/chat.css',
                 	'public/css/index.min.css' : 'public/css/index.css',
-                	'public/css/reply.min.css' : 'public/css/reply.css'
+                	'public/css/reply.min.css' : 'public/css/reply.css',
+                	'public/css/pagination.min.css' : 'public/css/pagination.css'
                 }
             }
 		},

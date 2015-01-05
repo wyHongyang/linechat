@@ -104,8 +104,9 @@
 }
 .text-sm {
   font-size: 12px;
-  line-height: 12px;
+  line-height: 15px;
   vertical-align: middle;
+  letter-spacing: normal;
 }
 .text-success {
   color: #1aae88;
