@@ -140,6 +140,7 @@ license GPL/LGPL/MPL
 		container: null,
 		title_container: null,
 		text_container: null,
+		slim_div:null,// Add slim div for slimscroll
 		animating: false, // Stores what is currently being animated (in or out).
 		timerHide: false, // Stores whether the notice was hidden by a timer.
 

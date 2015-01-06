@@ -19,13 +19,13 @@
 			this.opts['type'] = 'notice';
 			this.opts['styling'] = 'fontawesome';
 			this.opts['stack'] = {
-				dir1:'dowm',
+				dir1:'down',
 				dir2:'right',
 				push:'top',
 				spacing1:'20',
 				spacing2:'20',
-				firstpos1:'200',
-				firstpos2:'400',
+				firstpos1:200,
+				firstpos2:400,
 				context:$('body'),
 			};
 			this.opts['delay'] = '3000';
@@ -39,7 +39,7 @@
 		    	labels: {}
 			};
 			this.opts = $.extend({},this.opts,options);
-			return new Pnotify(this.opts);
+			return new PNotify(this.opts);
 			/**
 			 * $.notify({
 			 * 	 @param title
@@ -54,22 +54,22 @@
 
 $(function(){
 	/**
-	 * result
+	 * data
 	 * @param type
 	 * @param message
 	 * */
 	$.ajaxSetup({
 		dataType:'json',
-		success:function(result,status){
+		success:function(data,status){
 			$.notify({
 				title:'Success',
-				text : result.message
+				text : data
 			});
 		},
-		error:function(result,status,xhr){
+		error:function(data,status,xhr){
 			$.notify({
 				title:'Error',
-				text : result.message
+				text : data
 			});
 		}
 	});
