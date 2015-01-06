@@ -12,7 +12,65 @@
 							+(date.getSeconds()>9?date.getSeconds():"0"+date.getSeconds())+" "
 							+(date.getMonth()+1)+"/"+date.getDate()+"/"+date.getFullYear();
 			return dateFormat;
-		}
+		},
+		notify : function(options){
+			var that = this ;
+			this.opts = {};
+			this.opts['type'] = 'notice';
+			this.opts['styling'] = 'fontawesome';
+			this.opts['stack'] = {
+				dir1:'dowm',
+				dir2:'right',
+				push:'top',
+				spacing1:'20',
+				spacing2:'20',
+				firstpos1:'200',
+				firstpos2:'400',
+				context:$('body'),
+			};
+			this.opts['delay'] = '3000';
+			this.opts['width'] = '500px';
+			this.opts['min-height'] = '300px';
+			this.opts['button'] = {
+				closer: true,
+		    	sticker: false,
+		    	closer_hover: true,
+		    	sticker_hover: false,
+		    	labels: {}
+			};
+			this.opts = $.extend({},this.opts,options);
+			return new Pnotify(this.opts);
+			/**
+			 * $.notify({
+			 * 	 @param title
+			 * 	 @param text
+			 * });
+			 * */
+		},
+		
 	});
 	
 })(jQuery);
+
+$(function(){
+	/**
+	 * result
+	 * @param type
+	 * @param message
+	 * */
+	$.ajaxSetup({
+		dataType:'json',
+		success:function(result,status){
+			$.notify({
+				title:'Success',
+				text : result.message
+			});
+		},
+		error:function(result,status,xhr){
+			$.notify({
+				title:'Error',
+				text : result.message
+			});
+		}
+	});
+});
