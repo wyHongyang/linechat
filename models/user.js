@@ -18,5 +18,14 @@ var UserSchema = new Schema({
 });
 
 //UserSchema.add({ signupDate:{type:Date,default:Date.now}});
+UserSchema.virtual('user.full').get(function(){
+	return this.username+','+this.profile_image_url;
+});
+
+UserSchema.virtual('user.full').get(function(user){
+	var userinfo = user.split(',');
+	this.username = userinfo[0],
+	this.profile_image_url = userinfo[1];
+});
 
 module.exports = mongoose.model('User', UserSchema);

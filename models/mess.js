@@ -34,7 +34,7 @@ var CreatorSchema = new Schema({
  *  
  */
 
-var ContentSchema = Schema({
+var ContentSchema = new Schema({
 	_creator     : { type:Schema.Types.ObjectId, ref: 'Creator' },//匹配
 	send_time    : { type:String, required:true },
 	send_content : { type:String },
