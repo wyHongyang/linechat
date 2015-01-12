@@ -52,7 +52,7 @@
 	
 })(jQuery);
 
-$(function(){
+;(function($){
 	/**
 	 * data
 	 * @param type
@@ -73,4 +73,4 @@ $(function(){
 			});
 		}
 	});
-});
+})(jQuery);

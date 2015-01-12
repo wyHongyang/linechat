@@ -76,7 +76,8 @@ router.post('/login',function(req,res){
 	            req.session.username = docs[0].username;
 	            req.session._id = docs[0]._id;
 	            req.session.imageUrl = docs[0].profile_image_url;
-//	            return res.redirect('/home'+"?id="+docs[0]._id+'');  
+//	            return res.redirect('/home'+"?id="+docs[0]._id+'');
+	            console.log(res.session);
 	            return res.redirect('/home');
 	        } else{  
 	            console.log('用户名或密码不正确');  
