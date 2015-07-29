@@ -9,43 +9,34 @@ module.exports = function(grunt){
 		less:{
 			compileLogin: {
 				option:{ },
-				files: {
-					'public/css/login.css' : 'public/less/login.less',
-					'public/css/home.css'  : 'public/less/home.less',
-					'public/css/chat.css'  : 'public/less/chat.less',
-					'public/css/index.css' : 'public/less/index.less',
-					'public/css/reply.css' : 'public/less/reply.less',
-					'public/css/pagination.css' : 'public/less/pagination.less'
-				}
+				files: [{
+					expand:true,
+					cwd:'public/less',
+                    src:'*.less',
+                    dest: 'public/css',
+                    ext: '.css'
+				}]
 			},
 			compileMain: {
 				options: { },
-				files: {
-					
-				}
+				files: [{
+					expand:true,
+					cwd:'public/css',
+                    src:'*.css',
+                    dest: 'output/css',
+                    ext: '.min.css'
+				}]
 			},
-			minify : {
-                options : {
-                    cleancss : true,
-                    report : 'min',
-                    compress : true,
-                    cleancssOptions : {
-                        keepSpecialComments : 0,
-                        keepBreaks : false
-                    }
-                },
-                files : {
-                	'public/css/lib/bootstrap-datetimepicker.min.css':'public/css/lib/bootstrap-datetimepicker.css',
-                	'public/css/lib/datepicker.min.css':'public/css/lib/datepicker.css',
-                	'public/css/lib/animate.min.css':'public/css/lib/animate.css',
-                	'public/css/login.min.css' : 'public/css/login.css',
-                	'public/css/home.min.css'  : 'public/css/home.css',
-                	'public/css/chat.min.css'  : 'public/css/chat.css',
-                	'public/css/index.min.css' : 'public/css/index.css',
-                	'public/css/reply.min.css' : 'public/css/reply.css',
-                	'public/css/pagination.min.css' : 'public/css/pagination.css'
-                }
-            }
+			csslib:{
+				options: { },
+				files: [{
+					expand:true,
+					cwd:'public/css/lib',
+                    src:'*.css',
+                    dest: 'output/css/lib',
+                    ext: '.min.css'
+				}]
+			}
 		},
 		uglify : {
 			options: {
@@ -56,7 +47,8 @@ module.exports = function(grunt){
             		expand:true,
                     cwd:'public/js',
                     src:'*.js',
-                    dest: 'output/js'
+                    dest: 'output/js',
+                    ext:'.min.js'	
             	}]
             },
             buildlib:{
@@ -64,7 +56,8 @@ module.exports = function(grunt){
             		expand:true,
                     cwd:'public/js/lib',
                     src:'*.js',
-                    dest: 'output/js/lib'
+                    dest: 'output/js/lib',
+                    ext:'.min.js'
             	}]
             }
 		},
