@@ -1,0 +1,2 @@
+/*!2015-07-29 */
+!function(a){function b(){d.find(".form-horizontal").each(function(b,c){var d=a(c);d.animate({height:"toggle",opacity:"toggle"},"slow",function(){d.toggleClass("hidden")})})}var c=a(".switch"),d=a(".container"),e=a("#birthDate");c.on("click","i.fa,.tooltips",function(c){var d=a(this);d.is(".fa")?d.toggleClass("fa-pencil"):d.siblings("i.fa").toggleClass("fa-pencil"),b()}),e.datepicker({weekStart:1,format:"yyyy/mm/dd"})}(jQuery);

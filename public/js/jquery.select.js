@@ -13,7 +13,7 @@
 				var $target = $(e.target);
 				var selected = { 
 					value : $target.val(),
-					label : $target.find('.jq-option[selected="selected"]').text().trim().toLowerCase();
+					label : $target.find('.jq-option[selected="selected"]').text().trim().toLowerCase()
 				};
 				onSelect.call(that,selected,that,that.options);
 			});

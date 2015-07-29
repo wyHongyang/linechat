@@ -47,7 +47,27 @@ module.exports = function(grunt){
                 }
             }
 		},
-		
+		uglify : {
+			options: {
+                banner: '/*!<%= grunt.template.today("yyyy-mm-dd") %> */\n'//添加banner
+            },
+            build:{
+            	files:[{
+            		expand:true,
+                    cwd:'public/js',
+                    src:'*.js',
+                    dest: 'output/js'
+            	}]
+            },
+            buildlib:{
+            	files:[{
+            		expand:true,
+                    cwd:'public/js/lib',
+                    src:'*.js',
+                    dest: 'output/js/lib'
+            	}]
+            }
+		},
 		watch:{
 			scripts: {
 			   files:['public/less/*.less','public/less/lib/*.less'],
@@ -63,6 +83,5 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.registerTask('default', [ 'less', 'watch' ]);
-    grunt.registerTask('buildAll', [ 'less', 'requirejs', 'uglify' ]);
-
-}
+    grunt.registerTask('buildAll', [ 'less', 'uglify' ]);
+};
