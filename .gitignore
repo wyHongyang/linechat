@@ -7,4 +7,3 @@ README.md
 /node_modules
 #过滤 bin
 /bin
-/output/
